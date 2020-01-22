@@ -3,13 +3,14 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
 class PasswordCreator{
 
 public:
    void readFile();
-   void generatePassword(std::string userID);
-   void writeToFile(std::string userID, std::string userPassword);
+   std::string generatePassword(std::string userID);
    PasswordCreator();
    bool usernameExists(std::string userID);
 private:
