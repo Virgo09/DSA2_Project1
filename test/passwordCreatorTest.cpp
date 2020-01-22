@@ -3,6 +3,7 @@
 #include "catch/catch.hpp"
 #include "../PasswordCreator.cpp"
 #include "../EncryptPasswords.cpp"
+#include "../User.cpp"
 
 TEST_CASE("Checking that all names were read in")
 {
@@ -16,12 +17,26 @@ TEST_CASE("Checking that all names were read in")
    
 }
 
-TEST_CASE("Confirm new passwords don't match previous"){
+TEST_CASE("Confirm new passwords are encrypted"){
    EncryptPasswords obj;
    
    obj.readFile();
    REQUIRE(obj.confirmChange("WYMORE"));
    REQUIRE(obj.confirmChange("AALDERINK"));
+   REQUIRE(obj.encryptPassword("dsatwofun") == "mgnxoxthr");
+}
+
+TEST_CASE("Confirm users object gets created properly"){
+
+User* me = new User("Wymore", "dsatwofun");
+REQUIRE(me -> GetUsername() == "Wymore");
+REQUIRE(me -> GetPassword() == "dsatwofun");
+User* instructor = new User("Coffey", "iamteacher");
+User* classmate = new User("Maples", "classmate");
+instructor -> SetNext(classmate);
+REQUIRE(instructor -> GetNext() -> GetUsername() == "Maples");
+REQUIRE(instructor -> GetNext() -> GetPassword() == "classmate");
+
 }
 
 // Compile & run:
