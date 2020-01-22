@@ -28,14 +28,14 @@ TEST_CASE("Confirm new passwords are encrypted"){
 
 TEST_CASE("Confirm users object gets created properly"){
 
-User* me = new User("Wymore", "dsatwofun");
-REQUIRE(me -> GetUsername() == "Wymore");
-REQUIRE(me -> GetPassword() == "dsatwofun");
-User* instructor = new User("Coffey", "iamteacher");
-User* classmate = new User("Maples", "classmate");
-instructor -> SetNext(classmate);
-REQUIRE(instructor -> GetNext() -> GetUsername() == "Maples");
-REQUIRE(instructor -> GetNext() -> GetPassword() == "classmate");
+   User* me = new User("Wymore", "dsatwofun");
+   REQUIRE(me -> GetUsername() == "Wymore");
+   REQUIRE(me -> GetPassword() == "dsatwofun");
+   User* instructor = new User("Coffey", "iamteacher");
+   User* classmate = new User("Maples", "classmate");
+   instructor -> SetNext(classmate);
+   REQUIRE(instructor -> GetNext() -> GetUsername() == "Maples");
+   REQUIRE(instructor -> GetNext() -> GetPassword() == "classmate");
 
 }
 
