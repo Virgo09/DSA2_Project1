@@ -4,6 +4,7 @@
 #include "../PasswordCreator.cpp"
 #include "../EncryptPasswords.cpp"
 #include "../User.cpp"
+#include "../ChainedHashTable.cpp"
 
 TEST_CASE("Checking that all names were read in")
 {
@@ -36,6 +37,21 @@ TEST_CASE("Confirm users object gets created properly"){
    instructor -> SetNext(classmate);
    REQUIRE(instructor -> GetNext() -> GetUsername() == "Maples");
    REQUIRE(instructor -> GetNext() -> GetPassword() == "classmate");
+
+}
+
+TEST_CASE("Confirm hashing"){
+
+   ChainedHashTable* obj = new ChainedHashTable();
+   
+   User* userObj = new User("WYMORE", "dsatwofun");
+   
+   obj -> readFile();
+   obj -> longestBucket();
+   std::cout << "51" << std::endl;
+   std::cout << obj -> hash("WYMORE") << std::endl;
+   REQUIRE(obj -> search("WYMORE") -> GetUsername() == "WYMORE");
+
 
 }
 
