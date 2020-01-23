@@ -1,3 +1,13 @@
+/***************************************************************
+Student Name:Justin Wymore
+File Name: PasswordCreator.hpp
+Assignment number: Project 1
+Last edit: 23 January 2020
+
+Creates a random 9-character password in all lowercase characters
+and writes them to a file with their respective username
+***************************************************************/
+
 #ifndef PASSWORDCREATOR_HPP
 #define PASSWORDCREATOR_HPP
 #include <fstream>

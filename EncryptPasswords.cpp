@@ -27,7 +27,7 @@ std::string EncryptPasswords::encryptPassword(std::string userPassword){
    encryptedUserPassword = "";
 
    for (int i = 0, j = 0; i < 9; i++) {
-      encryptedUserPassword += (userPassword[i] - 'a' + key[j] - 'a') % 26 + 'a'; //added 'A' to bring it in range of ASCII alphabet [ 65-90 | A-Z ]
+      encryptedUserPassword += (userPassword[i] - 'a' + key[j] - 'a') % 26 + 'a';
       j = (j + 1) % key.length();
    }
    return encryptedUserPassword;
