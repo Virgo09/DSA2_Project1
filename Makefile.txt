@@ -15,7 +15,7 @@ main: main.o $(OBJECTS)
 $(OBJECTS): $(HEADERS)
 
 testBuild: $(OBJECTS)
-	$(CC) $(CFLAGS) -Itest/catch/catch.hpp -o test/TestCase $(OBJECTS) test/TestCase.cpp
+	$(CC) $(CFLAGS) -Itest/catch/catch.hpp -o test/passwordCreatorTest $(OBJECTS) test/passwordCreatorTest.cpp
 
 test: clean testBuild
 	test/TestCase --success

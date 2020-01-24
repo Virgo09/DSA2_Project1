@@ -1,10 +1,10 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch/catch.hpp"
-#include "../PasswordCreator.cpp"
-#include "../EncryptPasswords.cpp"
-#include "../User.cpp"
-#include "../ChainedHashTable.cpp"
+#include "../PasswordCreator.hpp"
+#include "../EncryptPasswords.hpp"
+#include "../User.hpp"
+#include "../ChainedHashTable.hpp"
 
 TEST_CASE("Checking that all names were read in")
 {
