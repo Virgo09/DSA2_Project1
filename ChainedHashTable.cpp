@@ -16,28 +16,20 @@ void ChainedHashTable::readFile(){
    
    while(std::getline(encryptedFile, username, ' ')){
       std::getline(encryptedFile, password);
-      hashValue = hash(username);
-      insertUser(username, password, hashValue);
+      user = new User(username,password);
+      insertUser(user);
    }
 }
    
-void ChainedHashTable::insertUser(std::string username, std::string password, int hashValue){
-   if(table[hashValue] == nullptr){
-      table[hashValue] = new User(username, password);
-   }
-   else{
-      User* user = table[hashValue];
-      while(user -> GetNext() != nullptr){
-         user = user -> GetNext();
-         if(user -> GetNext() == nullptr){
-            user -> SetNext(new User(username, password));
-         }
-      }
-   }
+void ChainedHashTable::insertUser(User* user)
+{
+   int hashValue = hash(user -> GetUsername());
+   user -> SetNext(table[hashValue]);
+   table[hashValue] = user;
 }
    
 int ChainedHashTable::hash(std::string username){
-   int hashValue;
+   int hashValue = 0;
    for(int i = 0; i < username.length(); i++){
       hashValue += username[i];
    }
@@ -47,30 +39,24 @@ int ChainedHashTable::hash(std::string username){
 
 User* ChainedHashTable::search(std::string userName){
    int hashValue = hash(userName);
-   std::cout << hashValue << std::endl;
    User* user = table[hashValue];
-   if(table[hashValue] == nullptr){
-      return nullptr;
-   }
-   else{
-      while(user -> GetUsername() != userName){
-         if(user -> GetUsername() == userName){
-            return user;
-         }
-         else if(user == nullptr){
-            return nullptr;
-         }
+   
+   while(user != nullptr){ 
+      if(user -> GetUsername() == userName)
+         return user;
+      else 
          user = user -> GetNext(); 
-      }
    }
+
    return nullptr;
 }
    
 int ChainedHashTable::longestBucket(){
-   int count;
-   int longest;
+   int count = 0;
+   int longest = 0;
    User* user;
    for(int i = 0; i < NUM_BUCKETS; i++){
+      count = 0;
       user = table[i];
       while(user != nullptr){
          user = user -> GetNext();
@@ -78,6 +64,7 @@ int ChainedHashTable::longestBucket(){
       }
       if(count > longest){
          longest = count;
+         std::cout << i << std::endl;
       }
    }
    return longest;

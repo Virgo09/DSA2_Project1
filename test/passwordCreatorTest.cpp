@@ -1,10 +1,10 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch/catch.hpp"
-#include "../PasswordCreator.hpp"
-#include "../EncryptPasswords.hpp"
-#include "../User.hpp"
-#include "../ChainedHashTable.hpp"
+#include "../PasswordCreator.cpp"
+#include "../EncryptPasswords.cpp"
+#include "../User.cpp"
+#include "../ChainedHashTable.cpp"
 
 TEST_CASE("Checking that all names were read in")
 {
@@ -47,10 +47,9 @@ TEST_CASE("Confirm hashing"){
    User* userObj = new User("WYMORE", "dsatwofun");
    
    obj -> readFile();
-   obj -> longestBucket();
-   std::cout << "51" << std::endl;
-   std::cout << obj -> hash("WYMORE") << std::endl;
+   std::cout << obj -> longestBucket() << std::endl;
    REQUIRE(obj -> search("WYMORE") -> GetUsername() == "WYMORE");
+   REQUIRE(obj -> search("AAAAAAA") == nullptr);
 
 
 }
