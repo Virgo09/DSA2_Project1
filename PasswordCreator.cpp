@@ -19,7 +19,7 @@ void PasswordCreator::readFile(){
    }
    while(getline(userNameFile, userID, ' ')){
       std::getline(userNameFile, ignore);
-      userPassword = generatePassword(userID);
+      userPassword = generatePassword();
       raw << userID + ' ' + userPassword + '\n';
    }
    raw.close();
@@ -45,7 +45,7 @@ bool PasswordCreator::usernameExists(std::string userID){
    return false;
 }
 
-std::string PasswordCreator::generatePassword(std::string userID){
+std::string PasswordCreator::generatePassword(){
    std::string generatedPassword = "";
    
    for(int i = 0; i < 9; i++){

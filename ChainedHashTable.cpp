@@ -69,3 +69,17 @@ int ChainedHashTable::longestBucket(){
    }
    return longest;
 }
+
+ChainedHashTable::~ChainedHashTable(){
+   User* current, *next;
+   int counter = 0;
+   while(counter < NUM_BUCKETS){
+      current = table[counter];
+      while(current != nullptr){
+         next = current -> GetNext();
+         delete current;
+         current = next;
+      }
+      counter++;
+   }
+}

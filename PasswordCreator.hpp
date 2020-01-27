@@ -20,7 +20,7 @@ class PasswordCreator{
 
 public:
    void readFile();
-   std::string generatePassword(std::string userID);
+   std::string generatePassword();
    PasswordCreator();
    bool usernameExists(std::string userID);
 private:

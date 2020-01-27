@@ -11,21 +11,22 @@ and hashes their object into a table
 #define CHAINEDHASHTABLE_HPP
 #include <iostream>
 #include <fstream>
-#include "User.hpp"
-        
+#include "User.cpp"
+           
 class ChainedHashTable{
-                  
-                  public:
+                           
+                           public:
    ChainedHashTable();
+   ~ChainedHashTable();
    void readFile();
    void insertUser(User* user);
    int hash(std::string username);
    User* search(std::string userName);
    int longestBucket();
-                  
-                  private:
+                           
+                           private:
    static const int NUM_BUCKETS = 400;
    User* table[NUM_BUCKETS];
 
-                  };
-        #endif
+                           };
+           #endif
