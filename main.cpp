@@ -8,9 +8,9 @@ Directs program. Outputs 5 users with correct password combinations
 and 5 with incorrect password combinations
 ***************************************************************/
 
-#include "ChainedHashTable.cpp"
-#include "PasswordCreator.cpp"
-#include "EncryptPasswords.cpp"
+#include "ChainedHashTable.hpp"
+#include "PasswordCreator.hpp"
+#include "EncryptPasswords.hpp"
 
 int main(){
    std::string username, password;

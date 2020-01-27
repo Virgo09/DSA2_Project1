@@ -11,7 +11,7 @@ and hashes their object into a table
 #define CHAINEDHASHTABLE_HPP
 #include <iostream>
 #include <fstream>
-#include "User.cpp"
+#include "User.hpp"
            
 class ChainedHashTable{
                            

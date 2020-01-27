@@ -82,4 +82,5 @@ ChainedHashTable::~ChainedHashTable(){
       }
       counter++;
    }
+   delete[] table;
 }
